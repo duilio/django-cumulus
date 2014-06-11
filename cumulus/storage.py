@@ -161,7 +161,8 @@ class SwiftclientStorage(Storage):
         """
         Helper function to retrieve the requested Object.
         """
-        if name not in self.container.get_object_names():
+        if name not in self.container.get_object_names(prefix=name,
+                                                       full_listing=True):
             return False
         else:
             return self.container.get_object(name)
